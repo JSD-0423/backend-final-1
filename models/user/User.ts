@@ -4,8 +4,8 @@ import {
   CreationOptional,
   HasManyAddAssociationMixin,
 } from "sequelize";
-import Database from "../database/Database";
-import { Cart, Order } from ".";
+import Database from "../../database/Database";
+import { Cart, Order } from "..";
 
 class User extends Model {
   declare id: number;
@@ -25,7 +25,6 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false,
     },
     firstName: {
       type: DataTypes.STRING,
@@ -37,6 +36,7 @@ User.init(
     },
     email: {
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false,
     },
     password: {

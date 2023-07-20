@@ -1,6 +1,7 @@
-import Credentials from "./Credentials";
-import User from "./User";
-import Cart from "./Cart";
-import Order from "./Order";
+import Credentials from "./user/Credentials";
+import User from "./user/User";
+import Cart from "./product/Cart";
+import Order from "./product/Order";
+import Product from "./product/Product";
 
-export { User, Order, Cart, Credentials };
+export { User, Order, Cart, Credentials, Product };

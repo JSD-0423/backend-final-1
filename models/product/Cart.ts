@@ -1,6 +1,6 @@
 import { Model, DataTypes, CreationOptional } from "sequelize";
-import Database from "../database/Database";
-import { User } from ".";
+import Database from "../../database/Database";
+import { User } from "..";
 
 class Cart extends Model {
   declare id: number;
@@ -21,7 +21,6 @@ Cart.init(
       primaryKey: true,
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false,
     },
     quantity: {
       type: DataTypes.INTEGER,
@@ -56,6 +55,7 @@ Cart.init(
   }
 );
 
+User.hasOne(Cart, { as: "carts", foreignKey: "cartId" });
 Cart.belongsTo(User, { as: "users", foreignKey: "cartId" });
 
 export default Cart;

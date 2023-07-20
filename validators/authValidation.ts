@@ -60,6 +60,7 @@ export const credentialsSchema = Joi.object({
     .max(30)
     .options({
       messages: {
+        "email.empty": "Sorry, email can not be empty",
         "email.base": "Please, enter a valid email",
         "string.min": "minimum 3 character required",
         "string.max": "maximum 30 characters allowed",
