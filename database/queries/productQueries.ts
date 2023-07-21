@@ -1,5 +1,5 @@
 import { Op } from "sequelize";
-import { Product } from "../../models";
+import { Category, Product } from "../../models";
 
 export function readAllProducts(
   offset: number,
@@ -26,6 +26,23 @@ export async function readProductByCategory(
     where: { category: categories, rating: { [Op.gte]: rating } },
   });
   return products;
+}
+
+export async function createCategory(category: Category) {
+  const categoryId = await Category.create({ ...category });
+  return categoryId;
+}
+
+export async function readCategoryByName(
+  category: string
+): Promise<Category | null> {
+  const categoryObj = await Category.findOne({ where: { category } });
+  return categoryObj;
+}
+
+export async function readAllCategories(): Promise<Category[]> {
+  const categoryObj = await Category.findAll();
+  return categoryObj;
 }
 
 export async function readProductByName(
