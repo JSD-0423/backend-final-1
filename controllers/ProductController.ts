@@ -7,7 +7,7 @@ import {
   readProductByName,
   deleteProducts,
   readProductByCategory,
-} from "../database/queries/productQueries";
+} from "../database/queries/";
 import { Product } from "../models";
 import { productValidation, searchValidation } from "../validators";
 
