@@ -1,7 +1,7 @@
 import { Model, DataTypes, CreationOptional } from "sequelize";
-import Database from "../database/Database";
-import { User, Cart } from ".";
-import { STATUS } from "./orderStatus";
+import Database from "../../database/Database";
+import { User, Cart } from "..";
+import { STATUS } from "../orderStatus";
 
 class Order extends Model {
   declare id: number;
@@ -18,7 +18,6 @@ Order.init(
       primaryKey: true,
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false,
     },
     status: {
       type: DataTypes.ENUM("PENDING", "COMPLETED", "DECLINED", "RETURNED"),
@@ -46,5 +45,8 @@ Order.init(
     sequelize: Database.getInstance(),
   }
 );
+
+Order.hasOne(Cart, { as: "carts", foreignKey: "cartId" });
+Order.hasMany(User, { as: "users", foreignKey: "userId" });
 
 export default Order;

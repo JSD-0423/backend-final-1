@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { GenericError, AuthError } from "../errors/";
 import { Credentials, User } from "../models";
-import { userSchema, credentialsSchema } from "../validators/reqValidation";
+import { userSchema, credentialsSchema } from "../validators/";
 import { readUserByEmail, createUser } from "../database/queries";
 import AuthHelpers, { hashPassword, checkPassword } from "../helpers/";
 
@@ -39,7 +39,8 @@ class UserController {
         );
       const userHash = hashPassword(user);
       const id = await createUser(userHash);
-      if (!id) throw new AuthError("User did not created ", 500);
+      if (!id) throw new AuthError("User did not created", 500);
+      if (id === -1) throw new AuthError("User already exists", 400);
       const token = await AuthHelpers.createToken(user.id);
       if (!token) throw new AuthError("Token Generation Error", 500);
       res.status(201).json({ status: 201, message: "user created", token });
