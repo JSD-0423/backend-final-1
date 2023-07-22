@@ -4,7 +4,7 @@
   "description": "The final project to graduate the TAP program.",
   "main": "index.ts",
   "scripts": {
-    "dev": "nodemon",
+    "dev": "cross-env NODE_ENV=development nodemon",
     "test": "jest",
     "db-fake": "ts-node ./database/seed/dataInsertion.ts && npm run dev",
     "start": "cross-env NODE_ENV=production node dist/",
