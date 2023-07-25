@@ -1,5 +1,4 @@
 import Joi from "joi";
-import config from "../config/environment";
 
 const passwordPatternMessage =
   "Password must contain at least 8 characters, one uppercase, one number and one special case character";

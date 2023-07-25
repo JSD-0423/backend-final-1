@@ -9,4 +9,6 @@ export {
   createCategory,
   readCategoryByName,
   readAllCategories,
+  readRecentProducts,
+  readFilterProduct,
 } from "./productQueries";

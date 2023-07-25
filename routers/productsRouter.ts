@@ -6,6 +6,8 @@ const router = Router();
 
 router.get("/handpick", productController.getHandPickedProduct);
 router.get("/search", productController.searchProduct);
+router.get("/recent", productController.getRecentProducts);
+router.get("/filter", productController.getAllFilteredProducts);
 
 router
   .route("/:id")

@@ -1,15 +1,15 @@
-import https from "https";
+import http from "http";
 import app from "./app";
 import Database from "./database/Database";
 import environment from "./config/environment";
 
 const port = environment.port;
 
-const server = https.createServer(app);
+const server = http.createServer(app);
 
 Database.getInstance()
-  .sync()
+  .sync({ logging: false })
   .then(() => {
-    server.listen(port, () => console.log(`app is running on prot: ${port}`));
+    server.listen(port, () => console.log("The server is running now!!"));
   })
   .catch(console.log);

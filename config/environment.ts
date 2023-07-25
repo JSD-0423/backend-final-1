@@ -17,7 +17,7 @@ const {
 } = process.env;
 const config = {
   database: {
-    uri: DATABASE_TEST_URL ? DATABASE_TEST_URL : "",
+    uri: NODE_ENV === "production" ? `${DATABASE_URL}` : `${DATABASE_TEST_URL}`,
   },
   password: {
     pattern: PASSWORD_PATTERN ? PASSWORD_PATTERN : "",
