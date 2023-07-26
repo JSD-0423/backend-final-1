@@ -1,0 +1,409 @@
+{
+	"info": {
+		"_postman_id": "96478609-5796-43d3-b63a-19836d8cc3c4",
+		"name": "TAP-Final",
+		"description": "Hello My Great team to our API postman workspace",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "12018463-96478609-5796-43d3-b63a-19836d8cc3c4"
+	},
+	"item": [
+		{
+			"name": "REST",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Sign in",
+							"id": "f0f73a49-d384-4595-884a-4c851890cf89",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"rabee@gmail.com\",\r\n    \"password\":\"123456789Ww$\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}/auth/login",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								},
+								"description": "This is the API to sign in, it returns tokken"
+							},
+							"response": []
+						},
+						{
+							"name": "Sign up",
+							"id": "61420ccd-515f-401e-8add-a70389898c79",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\":\"Rabee\",\r\n    \"lastName\":\"AlBhaisi\",\r\n    \"email\":\"rabee@gmail.com\",\r\n    \"password\":\"123456789Ww$\",\r\n    \"repeatPassword\":\"123456789Ww$\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}/auth/signup",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								},
+								"description": "Use thes to create new user, returns tokken"
+							},
+							"response": []
+						}
+					],
+					"id": "ab3d582f-58dc-434c-adda-185da7c07e78"
+				},
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "Get single product",
+							"id": "60957c97-6da6-43b9-88e2-b79c671d0adb",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/product/:id",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"product",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "90"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete products",
+							"id": "0b43b086-2ae1-4743-ba36-05e65faf7512",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/product/:id",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"product",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								},
+								"description": "Delete the assosiated product with the chosen id"
+							},
+							"response": []
+						},
+						{
+							"name": "Create new product",
+							"id": "9867b414-1e9b-45ad-be72-34d41b7e4285",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"Call \",\r\n    \"price\":0,\r\n    \"category\":\"Games\",\r\n    \"categoryId\":1,\r\n    \"brandId\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseurl}}/product",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all products",
+							"id": "9aef14dc-7e46-4147-82d8-530dc0415575",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/product?page=1&count=30",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"product"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "count",
+											"value": "30"
+										}
+									]
+								},
+								"description": "For pagination you can use page and count queries, they are optional, if you did not send them, they considered as page 0 and count 20 by default."
+							},
+							"response": []
+						},
+						{
+							"name": "Get handpick product",
+							"id": "c8f5817a-75ca-4e48-9330-e42282c5f39d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/product/handpick?rating=4.0&categories=Pizza,Bike",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"product",
+										"handpick"
+									],
+									"query": [
+										{
+											"key": "rating",
+											"value": "4.0"
+										},
+										{
+											"key": "categories",
+											"value": "Pizza,Bike"
+										}
+									]
+								},
+								"description": "Send a multiple categories sperated with the comma \",\"  \n\nThe rating is optional you do not need to send it, it considered 0.0"
+							},
+							"response": []
+						},
+						{
+							"name": "Get recent added products",
+							"id": "1d24e1ec-7257-40f1-9577-c676587b33f8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{localhost_url}}/product/recent?page=1&count=30",
+									"host": [
+										"{{localhost_url}}"
+									],
+									"path": [
+										"product",
+										"recent"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "count",
+											"value": "30"
+										}
+									]
+								},
+								"description": "For pagination you can use page and count queries, they are optional, if you did not send them, they considered as page 0 and count 20 by default."
+							},
+							"response": []
+						}
+					],
+					"id": "56d9d26b-cf8b-47d6-8fc1-77bba3886a85"
+				},
+				{
+					"name": "Search and filter",
+					"item": [
+						{
+							"name": "Search for product",
+							"id": "100d1f8d-2d9a-4bee-963f-ebdcbaee0a7c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/product/search?title=call",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"product",
+										"search"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "call",
+											"type": "text"
+										}
+									]
+								},
+								"description": "For pagination you can use page and count queries, they are optional, if you did not send them, they considered as page 0 and count 20 by default."
+							},
+							"response": []
+						},
+						{
+							"name": "Filter product",
+							"id": "27f576ba-182d-4625-be6e-a7171542ea0d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{localhost_url}}/product/filter?page=1&count=30&title=Sleek&minPrice=800&maxPrice=1000&rating=4.5&category=defaul&brand&orderBy=-rating",
+									"host": [
+										"{{localhost_url}}"
+									],
+									"path": [
+										"product",
+										"filter"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "count",
+											"value": "30"
+										},
+										{
+											"key": "title",
+											"value": "Sleek"
+										},
+										{
+											"key": "minPrice",
+											"value": "800"
+										},
+										{
+											"key": "maxPrice",
+											"value": "1000"
+										},
+										{
+											"key": "rating",
+											"value": "4.5"
+										},
+										{
+											"key": "category",
+											"value": "defaul"
+										},
+										{
+											"key": "brand",
+											"value": null
+										},
+										{
+											"key": "orderBy",
+											"value": "-rating"
+										}
+									]
+								},
+								"description": "orderBy can have positive and negative sign at the begining, the \"-\" sign means DESC order and the abcense of this value means ASC order for example you can use:\n\n- orderBy= price => this send the result in an ASC according to the price\n- orderBy= -price => this send the result in an DESC according to the price\n    \n\nto filter the result you can use the following in your query : \\[title,category,brand,minPrice,maxPrice,rating,createdAt,updatedAt\\]"
+							},
+							"response": []
+						}
+					],
+					"id": "e054a5ca-35ad-4f78-8546-a7474727d6c7"
+				}
+			],
+			"id": "2c290b34-ae39-434a-8d55-8c7e874d7ee4"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "64117ad9-b0b9-400f-92b6-50110fe29a87",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "4fdf1326-833a-4d33-8351-380030c86dae",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "98243b44-4e52-4ec4-a279-42cf97665083",
+			"key": "baseurl",
+			"value": "http://localhost:4000/api/v1"
+		},
+		{
+			"id": "6af0eda0-6ac6-471d-a4b6-effb16f891c5",
+			"key": "apiURl",
+			"value": "https://tap-final.onrender.com"
+		}
+	]
+}
