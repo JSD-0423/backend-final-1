@@ -59,5 +59,6 @@ Address.init(
 );
 
 Address.belongsTo(User, { as: "users", foreignKey: "userId" });
+User.hasOne(Address, { as: "addresses", foreignKey: "id" });
 
 export default Address;

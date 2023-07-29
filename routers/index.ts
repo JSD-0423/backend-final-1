@@ -3,10 +3,12 @@ import authRouter from "./authRouter";
 import productsRouter from "./productsRouter";
 import categoryRouter from "./categoryRouter";
 import { AuthError } from "../errors";
+import userRouter from "./userRouter";
 
 const router = Router();
 
 router.use("/auth", authRouter);
+router.use("/user", userRouter);
 router.use("/product", productsRouter);
 router.use("/category", categoryRouter);
 
