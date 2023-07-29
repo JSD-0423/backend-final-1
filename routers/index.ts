@@ -1,12 +1,14 @@
 import { NextFunction, Request, Response, Router } from "express";
 import authRouter from "./authRouter";
 import productsRouter from "./productsRouter";
+import categoryRouter from "./categoryRouter";
 import { AuthError } from "../errors";
 
 const router = Router();
 
 router.use("/auth", authRouter);
 router.use("/product", productsRouter);
+router.use("/category", categoryRouter);
 
 router.use("/*", (_, res) => {
   res.status(404).json({ statusCode: 404, error: "Undefined Request!" });

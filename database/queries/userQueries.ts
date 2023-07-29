@@ -13,7 +13,6 @@ export async function createUser(user: User): Promise<number | null> {
   const { firstName, lastName, email, password } = user;
   try {
     const result = await User.create({ firstName, lastName, email, password });
-    console.log("result: ", result);
     return result ? result.id : null;
   } catch (error) {
     const exception = error as UniqueConstraintError;

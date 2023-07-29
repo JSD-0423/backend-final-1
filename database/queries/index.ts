@@ -5,10 +5,13 @@ export {
   addProduct,
   readProductByName,
   deleteProducts,
-  readProductByCategory,
   createCategory,
   readCategoryByName,
   readAllCategories,
   readRecentProducts,
   readFilterProduct,
 } from "./productQueries";
+
+import CategoryQueries from "./CategoryQueries";
+
+export { CategoryQueries };

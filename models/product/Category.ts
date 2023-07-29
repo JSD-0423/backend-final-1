@@ -1,5 +1,6 @@
 import { Model, DataTypes } from "sequelize";
 import Database from "../../database/Database";
+import Product from "./Product";
 
 class Category extends Model {
   declare id: number;
@@ -34,5 +35,8 @@ Category.init(
     sequelize: Database.getInstance(),
   }
 );
+
+Category.hasMany(Product, { as: "products", foreignKey: "categoryId" });
+Product.belongsTo(Category, { as: "categories", foreignKey: "id" });
 
 export default Category;

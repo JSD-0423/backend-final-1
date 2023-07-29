@@ -1,6 +1,6 @@
-import { Model, DataTypes, CreationOptional } from "sequelize";
+import { Model, DataTypes } from "sequelize";
 import Database from "../../database/Database";
-import { User, Cart } from "..";
+import Category from "./Category";
 
 class Product extends Model {
   declare id: number;
@@ -47,7 +47,7 @@ Product.init(
       allowNull: false,
     },
     categoryId: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     brandId: {
