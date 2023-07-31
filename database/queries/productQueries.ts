@@ -1,6 +1,6 @@
 import { Op } from "sequelize";
-import { Category, Product } from "../../models";
-import { FilterOptionsInterface } from "../../interfaces";
+import { Category, Favorite, Product } from "../../models";
+import { CategoryInterface, FilterOptionsInterface } from "../../interfaces";
 
 export function readAllProducts(
   offset: number,
@@ -19,17 +19,7 @@ export async function deleteProducts(id: string[]): Promise<number> {
   return deleted;
 }
 
-export async function readProductByCategory(
-  categories: string[],
-  rating: number
-) {
-  const products = await Product.findAll({
-    where: { category: categories, rating: { [Op.gte]: rating } },
-  });
-  return products;
-}
-
-export async function createCategory(category: Category) {
+export async function createCategory(category: CategoryInterface) {
   const categoryId = await Category.create({ ...category });
   return categoryId;
 }
@@ -41,8 +31,11 @@ export async function readCategoryByName(
   return categoryObj;
 }
 
-export async function readAllCategories(): Promise<Category[]> {
-  const categoryObj = await Category.findAll();
+export async function readAllCategories(
+  offset: number,
+  limit: number
+): Promise<Category[]> {
+  const categoryObj = await Category.findAll({ limit, offset });
   return categoryObj;
 }
 
@@ -67,7 +60,6 @@ export async function readFilterProduct(
   orderBy: string = "id"
 ): Promise<{ rows: Product[]; count: number }> {
   const options = filterFactory(filter);
-  console.log("options : ", options);
   const filteredProducts = await Product.findAndCountAll({
     limit,
     where: { ...options },
@@ -75,6 +67,19 @@ export async function readFilterProduct(
     offset,
   });
   return filteredProducts;
+}
+
+export async function readUserFavourite(
+  offset: number,
+  limit: number,
+  id: number
+): Promise<{ rows: Product[]; count: number } | null> {
+  const favourite = await Favorite.findByPk(id);
+  if (!favourite) return null;
+  const favProducts = await Product.findAndCountAll({
+    where: { id: favourite.productsIds },
+  });
+  return favProducts;
 }
 
 export async function readRecentProducts(
@@ -111,6 +116,5 @@ function filterFactory(filter: FilterOptionsInterface) {
       [Op.between]: [Math.max(0, Number(minPrice)), maxPrice],
     };
   if (rating) filterOptions["rating"] = { [Op.gte]: rating };
-
   return filterOptions;
 }

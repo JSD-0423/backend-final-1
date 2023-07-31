@@ -6,13 +6,11 @@ import {
   addProduct,
   readProductByName,
   deleteProducts,
-  readProductByCategory,
   readRecentProducts,
   readFilterProduct,
 } from "../database/queries/";
 import { Product } from "../models";
 import { productValidation, searchValidation } from "../validators";
-import { FilterOptionsInterface } from "../interfaces";
 
 class ProductController {
   async getSingleProduct(req: Request, res: Response, next: NextFunction) {
@@ -128,23 +126,6 @@ class ProductController {
         id: productId,
         message: "Product is created successfully",
       });
-    } catch (error) {
-      next(error);
-    }
-  }
-
-  async getHandPickedProduct(req: Request, res: Response, next: NextFunction) {
-    try {
-      const { categories } = req.query;
-      const rating = Number(req.query.rating) || 0.0;
-      if (!categories) throw new GenericError("Please choose a category", 400);
-      const catArray = (categories as string).split(",");
-      console.log("catArray", catArray);
-      const handpickProducts: Product[] = await readProductByCategory(
-        catArray,
-        rating
-      );
-      res.json(handpickProducts);
     } catch (error) {
       next(error);
     }

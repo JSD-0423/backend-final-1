@@ -2,9 +2,9 @@
  * This module centralize all the environment variables of the application. Thanks to this module, there MUST NOT be any
  * `process.env` instruction in any other file or module.
  */
-import dotenv from "dotenv";
+import { config } from "dotenv";
 
-dotenv.config();
+config();
 
 const {
   DATABASE_TEST_URL,
@@ -15,7 +15,7 @@ const {
   ORIGIN,
   PASSWORD_PATTERN,
 } = process.env;
-const config = {
+const configEnv = {
   database: {
     uri: NODE_ENV === "production" ? `${DATABASE_URL}` : `${DATABASE_TEST_URL}`,
   },
@@ -39,4 +39,4 @@ const config = {
       : false,
 };
 
-export default config;
+export default configEnv;
