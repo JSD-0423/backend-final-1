@@ -28,7 +28,7 @@ const configEnv = {
     secretKey: SECRET_KEY ? SECRET_KEY : "",
   },
   client: {
-    origin: ORIGIN ? ORIGIN : "http://localhost:3000",
+    origin: ORIGIN ? ORIGIN : "*",
   },
   ssl:
     NODE_ENV === "production"
