@@ -20,8 +20,8 @@ Favorite.init(
     userId: {
       type: DataTypes.INTEGER,
     },
-    productsIds: {
-      type: DataTypes.JSON,
+    productsId: {
+      type: DataTypes.INTEGER,
     },
   },
 
