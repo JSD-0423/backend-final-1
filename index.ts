@@ -8,7 +8,7 @@ const port = environment.port;
 const server = http.createServer(app);
 
 Database.getInstance()
-  .sync()
+  .sync({ force: true })
   .then(() => {
     server.listen(port, () => console.log("The server is running now!!"));
   })
