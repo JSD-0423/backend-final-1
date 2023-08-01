@@ -19,7 +19,7 @@ class App {
     this.app.use(compression());
     this.app.use(
       cors({
-        origin: "*",
+        origin: environment.client.origin,
         credentials: true,
       })
     );
