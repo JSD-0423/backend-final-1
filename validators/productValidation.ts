@@ -34,6 +34,16 @@ export const productValidation = Joi.object({
         "string.min": "minimum 10 character required",
       },
     }),
+   image: Joi.string()
+    .uri()
+    .min(12)
+    .label("Product image")
+    .options({
+      messages: {
+        "string.empty": "Sorry, {{#label}} can not be empty",
+        "string.min": "minimum 12 character required",
+      },
+    }),
   category: Joi.string()
     .min(3)
     .max(10)
