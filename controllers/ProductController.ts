@@ -39,7 +39,7 @@ class ProductController {
     try {
       const { title, page, count } = req.query;
       const limit = Number(count) || 20;
-      const offset = ((Number(page) || 0) - 1) * limit;
+      const offset = Math.max((Number(page) || 0) - 1, 0) * limit;
       const { error } = searchValidation.validate(title);
       if (error) throw new GenericError(error.message, 400);
       const products = await readProductByName(title as string, offset, limit);
